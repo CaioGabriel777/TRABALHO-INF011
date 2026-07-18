@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * COMPOSITE — Client.
- * Só conhece a interface ProdutoComercial: calcula totais sem saber (nem
- * precisar saber) se o item é um filme avulso ou um super pacote aninhado.
- */
 public class CarrinhoDeCompras {
 
     private final List<ProdutoComercial> itens = new ArrayList<>();
@@ -32,8 +27,8 @@ public class CarrinhoDeCompras {
             sb.append(System.lineSeparator()).append(p.descrever());
         }
         sb.append(System.lineSeparator())
-          .append(String.format(Locale.US, "TOTAL: R$ %.2f | %d min de conteúdo",
-                  getPrecoTotal(), getDuracaoTotalMin()));
+                .append(String.format(Locale.US, "TOTAL: R$ %.2f | %d min de conteúdo",
+                        getPrecoTotal(), getDuracaoTotalMin()));
         return sb.toString();
     }
 }

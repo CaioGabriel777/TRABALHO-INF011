@@ -1,11 +1,5 @@
 package comercial;
 
-/**
- * BUILDER — Director.
- * Conhece as "receitas" das promoções da Black Friday e as monta reutilizando
- * o PacoteBuilder. Nova promoção = novo método aqui, sem espalhar construção
- * complexa pelo código cliente.
- */
 public class CatalogoPromocoes {
 
     public Pacote trilogiaMatrix() {
