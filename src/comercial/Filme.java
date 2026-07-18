@@ -2,17 +2,19 @@ package comercial;
 
 import java.util.Locale;
 
+import playlist.ItemPlaylist;
+import playlist.PlaylistVisitor;
 import tecnico.Timeline;
 
 /**
- * COMPOSITE — Leaf.
+ * COMPOSITE — Leaf  |  VISITOR — ConcreteElement.
  *
  * A "casca comercial" do enunciado: encapsula atributos de negócio (título,
  * preço, resolução...) e CONTÉM uma Timeline (princípio da Composição).
  * Perguntas do domínio técnico (duração) são DELEGADAS à Timeline interna;
  * perguntas do domínio comercial (preço) a própria classe responde.
  */
-public class Filme implements ProdutoComercial {
+public class Filme implements ProdutoComercial, ItemPlaylist {
 
     private final String titulo;
     private final double preco;
@@ -43,5 +45,11 @@ public class Filme implements ProdutoComercial {
         return "  ".repeat(nivel) + String.format(Locale.US,
                 "- Filme: %s [%s] (R$ %.2f | %d min)",
                 titulo, resolucao, preco, getDuracaoMin());
+    }
+
+    /** VISITOR — double dispatch. */
+    @Override
+    public void aceitar(PlaylistVisitor visitante) {
+        visitante.visitar(this);
     }
 }
