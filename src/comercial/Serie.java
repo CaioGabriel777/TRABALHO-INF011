@@ -6,10 +6,6 @@ import java.util.Locale;
 
 import tecnico.Timeline;
 
-/**
- * COMPOSITE — Composite (de Episodio).
- * Preço e duração são derivados recursivamente dos episódios.
- */
 public class Serie implements ProdutoComercial {
 
     private final String titulo;
@@ -24,13 +20,17 @@ public class Serie implements ProdutoComercial {
         return this;
     }
 
-    /** Conveniência fluente: evita o "new Episodio(..., new Timeline(...))" verboso. */
+    /**
+     * Conveniência fluente: evita o "new Episodio(..., new Timeline(...))" verboso.
+     */
     public Serie comEpisodio(String titulo, double preco, String resolucao, int duracaoMin) {
         return adicionar(new Episodio(titulo, preco, resolucao, Timeline.padrao(duracaoMin)));
     }
 
     @Override
-    public String getTitulo() { return titulo; }
+    public String getTitulo() {
+        return titulo;
+    }
 
     @Override
     public double getPreco() {

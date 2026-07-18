@@ -1,6 +1,5 @@
 package tecnico;
 
-/** Trilha física da mídia (vídeo, áudio, legenda...). Domínio técnico puro. */
 public class Track {
 
     private final String tipo;
@@ -11,6 +10,11 @@ public class Track {
         this.duracaoMin = duracaoMin;
     }
 
-    public String getTipo() { return tipo; }
-    public int getDuracaoMin() { return duracaoMin; }
+    public String getTipo() {
+        return tipo;
+    }
+
+    public int getDuracaoMin() {
+        return duracaoMin;
+    }
 }

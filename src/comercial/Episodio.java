@@ -4,7 +4,6 @@ import java.util.Locale;
 
 import tecnico.Timeline;
 
-/** COMPOSITE — Leaf. */
 public class Episodio implements ProdutoComercial {
 
     private final String titulo;
@@ -20,15 +19,23 @@ public class Episodio implements ProdutoComercial {
     }
 
     @Override
-    public String getTitulo() { return titulo; }
+    public String getTitulo() {
+        return titulo;
+    }
 
     @Override
-    public double getPreco() { return preco; }
+    public double getPreco() {
+        return preco;
+    }
 
     @Override
-    public int getDuracaoMin() { return timeline.getDuracaoMin(); }
+    public int getDuracaoMin() {
+        return timeline.getDuracaoMin();
+    }
 
-    public String getResolucao() { return resolucao; }
+    public String getResolucao() {
+        return resolucao;
+    }
 
     @Override
     public String descrever(int nivel) {

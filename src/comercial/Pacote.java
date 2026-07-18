@@ -4,12 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * COMPOSITE — Composite.
- * Pacote promocional que agrupa QUALQUER ProdutoComercial — inclusive outros
- * pacotes ("Super Pacotes"). Preço = soma recursiva dos filhos com o desconto
- * do pacote aplicado; duração = soma recursiva das durações.
- */
 public class Pacote implements ProdutoComercial {
 
     private final String titulo;
@@ -27,7 +21,9 @@ public class Pacote implements ProdutoComercial {
     }
 
     @Override
-    public String getTitulo() { return titulo; }
+    public String getTitulo() {
+        return titulo;
+    }
 
     @Override
     public double getPreco() {
