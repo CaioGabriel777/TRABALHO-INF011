@@ -1,11 +1,10 @@
 package app;
 
-import comercial.CarrinhoDeCompras;
-import comercial.CatalogoPromocoes;
-import comercial.Filme;
-import comercial.Pacote;
-import comercial.PacoteBuilder;
+import comercial.*;
+import playlist.*;
 import tecnico.Timeline;
+
+import java.util.Locale;
 
 public class Main {
 
@@ -32,5 +31,27 @@ public class Main {
                 .adicionar(avulso);
 
         System.out.println(carrinho.resumo());
+
+
+        System.out.println("\n############ QUESTÃO II - Visitor ############\n");
+
+        Playlist playlist = new Playlist("Favoritas do Fim de Semana")
+                .adicionar(avulso) // item do catálogo
+                .adicionar(new Episodio("The National Anthem", 4.90, "FULLHD", Timeline.padrao(44)))
+                .adicionar(new MP3("Kids - MGMT (upload)", 8.4, 5))
+                .adicionar(new VideoClipe("Gato tocando piano (upload)", 25.0, 2));
+
+        CalculadoraLarguraBanda banda = new CalculadoraLarguraBanda();
+        playlist.aceitar(banda);
+        System.out.printf(Locale.US, "Largura de Banda Total: %.1f MB%n%n", banda.getTotalMB());
+
+        RelatorioNomes relatorio = new RelatorioNomes();
+        playlist.aceitar(relatorio);
+        System.out.println(relatorio.getRelatorio());
+        System.out.println();
+
+        ExportadorXML xml = new ExportadorXML();
+        playlist.aceitar(xml);
+        System.out.println(xml.exportar(playlist.getNome()));
     }
 }

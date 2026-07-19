@@ -2,9 +2,11 @@ package comercial;
 
 import java.util.Locale;
 
+import playlist.ItemPlaylist;
+import playlist.PlaylistVisitor;
 import tecnico.Timeline;
 
-public class Episodio implements ProdutoComercial {
+public class Episodio implements ProdutoComercial, ItemPlaylist {
 
     private final String titulo;
     private final double preco;
@@ -42,5 +44,10 @@ public class Episodio implements ProdutoComercial {
         return "  ".repeat(nivel) + String.format(Locale.US,
                 "- Episódio: %s [%s] (R$ %.2f | %d min)",
                 titulo, resolucao, preco, getDuracaoMin());
+    }
+
+    @Override
+    public void aceitar(PlaylistVisitor visitante) {
+        visitante.visitar(this);
     }
 }
